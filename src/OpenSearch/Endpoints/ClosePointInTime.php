@@ -33,7 +33,6 @@ class ClosePointInTime extends AbstractEndpoint
     public function getParamWhitelist(): array
     {
         return [
-            'pit_id',
         ];
     }
 
