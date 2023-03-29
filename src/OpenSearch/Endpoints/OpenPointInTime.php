@@ -21,18 +21,21 @@ declare(strict_types=1);
 
 namespace OpenSearch\Endpoints;
 
+use OpenSearch\Common\Exceptions\RuntimeException;
 use OpenSearch\Endpoints\AbstractEndpoint;
 
 class OpenPointInTime extends AbstractEndpoint
 {
     public function getURI(): string
     {
+        if (isset($this->index) !== true) {
+            throw new RuntimeException(
+                'index is required for opening point-in-time'
+            );
+        }
         $index = $this->index ?? null;
 
-        if (isset($index)) {
-            return "/$index/_pit";
-        }
-        return "/_pit";
+        return "/$index/_search/point_in_time";
     }
 
     public function getParamWhitelist(): array
