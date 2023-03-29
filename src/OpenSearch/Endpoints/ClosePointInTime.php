@@ -27,13 +27,13 @@ class ClosePointInTime extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_pit";
+        return "/_search/point_in_time";
     }
 
     public function getParamWhitelist(): array
     {
         return [
-
+            'pit_id',
         ];
     }
 
